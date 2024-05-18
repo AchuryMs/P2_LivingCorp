@@ -41,6 +41,10 @@ public class UsuarioWebDAOImpl implements UsuarioWebDAO {
         System.out.println("En el DAO implementado, Buscando UsuarioWeb con id: " + id);
         return em.find(UsuarioWeb.class, id);
     }
+    public UsuarioWeb buscarPorNombre(String user) {
+        System.out.println("En el DAO implementado, Buscando UsuarioWeb con nombre de usuario: " + user);
+        return em.find(UsuarioWeb.class, user);
+    }
 
     @Override
     public List<UsuarioWeb> buscarTodos() {

@@ -27,7 +27,7 @@ private EntityManager em;
     @Override
     public Propiedad actualizar(Propiedad entidad) {
         System.out.println("en el DAO implementado, actualizando Propiedad" + entidad.toString());
-        return null;
+        return em.merge(entidad);
     }
 
     @Override

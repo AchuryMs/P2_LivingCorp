@@ -58,3 +58,4 @@ public class PropiedadServicios implements Serializable {
                 .collect(Collectors.toSet());
     }
 
+}

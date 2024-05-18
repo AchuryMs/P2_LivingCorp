@@ -5,7 +5,9 @@ import co.edu.unbosque.modelo.entidades.Propiedad;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
 
+import java.util.List;
 import java.util.Set;
 
 @Stateless
@@ -42,7 +44,9 @@ private EntityManager em;
     }
 
     @Override
-    public Set<Propiedad> buscarTodos() {
-        return Set.of();
+    public List<Propiedad> buscarTodos() {
+        System.out.println("En la implementacion de propiedad, consultando todos");
+        TypedQuery<Propiedad> query = em.createQuery("SELECT all FROM Propiedad all", Propiedad.class);
+        return query.getResultList();
     }
 }

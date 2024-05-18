@@ -25,7 +25,7 @@ public class PropiedadServicios implements Serializable {
 
     public PropiedadDTO crearPropiedad(PropiedadDTO propiedad) {
         System.out.println("En el servicio creando: " + propiedad.toString());
-        return modelMapper.map( propiedadDAO.crear(modelMapper.map(propiedad, Propiedad.class)), PropiedadDTO.class);
+        return modelMapper.map(propiedadDAO.crear(modelMapper.map(propiedad, Propiedad.class)), PropiedadDTO.class);
     }
 
     public PropiedadDTO actualizarPropiedad(PropiedadDTO propiedad) {
@@ -33,23 +33,25 @@ public class PropiedadServicios implements Serializable {
         return modelMapper.map(propiedadDAO.actualizar(modelMapper.map(propiedad, Propiedad.class)), PropiedadDTO.class);
     }
 
-    public PropiedadDTO eliminarPropiedad(PropiedadDTO propiedad){
+    public PropiedadDTO eliminarPropiedad(PropiedadDTO propiedad) {
         System.out.println("En el servicio eliminando: " + propiedad.toString());
         return modelMapper.map(propiedadDAO.eliminar(modelMapper.map(propiedad, Propiedad.class)), PropiedadDTO.class);
     }
 
-    public PropiedadDTO buscarPropiedadPorId(PropiedadDTO propiedad){
+    public PropiedadDTO buscarPropiedadPorId(PropiedadDTO propiedad) {
         System.out.println("En el servicio buscando el siguiente id: " + propiedad.getId_propiedad());
         return modelMapper.map(propiedadDAO.buscar(propiedad.getId_propiedad()), PropiedadDTO.class);
     }
-    public Set<PropiedadDTO> buscarPropiedades(){
+
+    public Set<PropiedadDTO> buscarPropiedades() {
         System.out.println("En el servicio buscando todas las propiedades: ");
         return propiedadDAO.buscarTodos()
                 .stream()
                 .map(entity -> modelMapper.map(entity, PropiedadDTO.class))
                 .collect(Collectors.toSet());
     }
-    public Set<PropiedadDTO> buscarPropiedadesPorFiltro(String filtro){
+
+    public Set<PropiedadDTO> buscarPropiedadesPorFiltro(String filtro) {
         System.out.println("En el servicio buscando todas las propiedades: ");
         return propiedadDAO.buscarTodos()
                 .stream()

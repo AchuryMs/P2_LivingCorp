@@ -13,7 +13,5 @@ public class PropiedadServicios implements Serializable {
     @Inject
     PropiedadDAO propiedadDAO;
 
-    public PropiedadDTO crearPropiedad(PropiedadDTO propiedad) {
 
-    }
 }

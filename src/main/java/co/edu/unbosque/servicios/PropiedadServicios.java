@@ -22,6 +22,7 @@ public class PropiedadServicios implements Serializable {
     @Inject
     PropiedadDAO propiedadDAO;
 
+
     public PropiedadDTO crearPropiedad(PropiedadDTO propiedad) {
         System.out.println("En el servicio creando: " + propiedad.toString());
         return modelMapper.map( propiedadDAO.crear(modelMapper.map(propiedad, Propiedad.class)), PropiedadDTO.class);
@@ -57,4 +58,3 @@ public class PropiedadServicios implements Serializable {
                 .collect(Collectors.toSet());
     }
 
-}

@@ -1,0 +1,12 @@
+.dashboard {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.dashboard-section {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}

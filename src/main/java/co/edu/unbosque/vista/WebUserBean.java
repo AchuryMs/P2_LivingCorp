@@ -1,20 +1,20 @@
 package co.edu.unbosque.vista;
 
-import co.edu.unbosque.model.dto.WebUserDTO;
+import co.edu.unbosque.modelo.dto.UsuarioWebDTO;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Named;
 
 @Named
 @RequestScoped
 public class WebUserBean {
-    private WebUserDTO webUserDTO;
+    private UsuarioWebDTO usuarioWebDTO;
 
 
-    public WebUserDTO getWebUserDTO() {
-        return webUserDTO;
+    public UsuarioWebDTO getUsuarioWebDTO() {
+        return usuarioWebDTO;
     }
 
-    public void setWebUserDTO(WebUserDTO webUserDTO) {
-        this.webUserDTO = webUserDTO;
+    public void setUsuarioWebDTO(UsuarioWebDTO usuarioWebDTO) {
+        this.usuarioWebDTO = usuarioWebDTO;
     }
 }

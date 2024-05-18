@@ -57,4 +57,4 @@ public class PropiedadServicios implements Serializable {
                 .filter(propiedadDTO -> propiedadDTO.getCiudad_propiedad().equals(filtro))
                 .collect(Collectors.toSet());
     }
-
+}

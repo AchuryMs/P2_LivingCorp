@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Comprar inmueble | LivingCorp</title>
+    <link rel="shortcut icon"
+        href="https://www.pngkey.com/png/full/323-3232484_black-building-icon-png-building-white-icon-png.png" />
+
+    <style>
+        /* Inline CSS for simplicidad */
+        .main-text {
+            color: white;
+            position: absolute;
+            top: 200px;
+            left: 100px;
+        }
+
+        .button-container {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: space-between;
+            width: 400px;
+            /* Ajusta el ancho según sea necesario */
+        }
+
+        .button-container .ui-button-warning {
+            margin: 0 10px;
+            /* Espacio entre los botones */
+        }
+    </style>
+
+</h:head>
+
+<h:body>
+
+    <!--Banner y botones-->
+    <h:form style="position: relative;">
+        <p:graphicImage value="resources/img/apt_2.jpg" style="width: 98vw; height: 98vh; margin: 0" />
+
+        <div style="position: absolute; top: 50px; left: 100px;">
+            <p:graphicImage value="resources/img/font-icon.png" style="height: 60px;" />
+        </div>
+
+        <div style="position: absolute; top: 50px; left: 800px;">
+            <p:graphicImage value="resources/img/icon.png" style="height: 70px;" />
+        </div>
+
+        <div class="button-container">
+
+            <p:linkButton outcome="inmuebleComprar.xhtml" value="¡Lo quiero comprar ahora!"
+                styleClass="ui-button-warning" target="_blank">
+                <f:param name="productId" value="10" />
+            </p:linkButton>
+            <p:linkButton outcome="inmuebleRenta.xhtml" value="¡Lo quiero alquilar ahora!"
+                styleClass="ui-button-warning" target="_blank">
+                <f:param name="productId" value="10" />
+            </p:linkButton>
+        </div>
+    </h:form>
+    <!--cierre banner y botones-->
+
+    <!--Filtros-->
+    <div class="card">
+        <h:form>
+            <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
+
+            <p:panel header="INMUEBLES EN VENTA" style="margin-bottom: 20px;">
+                <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <div style="margin-right: 10px;">
+                        <p:outputLabel for="country1" value="Ubicación: " />
+                        <p:selectOneMenu id="country1" value="#{basicView.country}" style="width:150px;">
+                            <p:ajax listener="#{basicView.onCountryChange}" />
+                            <f:selectItem itemLabel="Select Country" itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{basicView.countries}" />
+                        </p:selectOneMenu>
+                    </div>
+
+                    <div style="margin-right: 10px;">
+                        <p:outputLabel for="rooms" value="Habitaciones: " />
+                        <p:selectOneMenu id="rooms" value="#{basicView.rooms}" style="width:150px;">
+                            <p:ajax listener="#{basicView.onRoomsChange}" />
+                            <f:selectItem itemLabel="Select Room" itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{basicView.rooms}" />
+                        </p:selectOneMenu>
+                    </div>
+
+                    <div style="margin-right: 10px;">
+                        <p:outputLabel for="price" value="Precio: " />
+                        <p:selectOneMenu id="price" value="#{basicView.price}" style="width:150px;">
+                            <p:ajax listener="#{basicView.onPriceChange}" />
+                            <f:selectItem itemLabel="Select Price" itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{basicView.prices}" />
+                        </p:selectOneMenu>
+                    </div>
+
+                    <div style="margin-right: 10px;">
+                        <p:outputLabel for="more" value="Más: " />
+                        <p:selectOneMenu id="more" value="#{basicView.more}" style="width:150px;">
+                            <p:ajax listener="#{basicView.onMoreChange}" />
+                            <f:selectItem itemLabel="Select More" itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{basicView.moreOptions}" />
+                        </p:selectOneMenu>
+                    </div>
+                </div>
+
+                <p:divider style="margin-top: 20px; margin-bottom: 20px;" />
+
+                <div style="text-align: right;">
+                    <p:commandButton value="Filtrar" update="msgs" action="#{basicView.displayLocation}"
+                        icon="pi pi-check" styleClass="ui-button-raised ui-button-warning" />
+                </div>
+            </p:panel>
+        </h:form>
+    </div>
+    <!--cierre filtros-->
+
+    <!--Cartas-->
+    <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+        <p:card style="width: 300px; margin: 10px;">
+            <f:facet name="header">
+                <img alt="user header" src="./resources/img/apt_1.jpg" style="width: 100%; height: auto;" />
+            </f:facet>
+            <div style="position: absolute; top: 10px; left: 10px; color: white;">
+                <f:facet name="title">
+                    Compartido en bosa
+                </f:facet>
+                <f:facet name="subtitle">
+                    Apartamento
+                </f:facet>
+
+            </div>
+            <p:commandButton value="Abrir Modal" oncomplete="PF('myDialog').show()" icon="pi pi-external-link" />
+
+        </p:card>
+        <p:card style="width: 300px; margin: 10px;">
+            <f:facet name="header">
+                <img alt="user header" src="./resources/img/apt_1.jpg" style="width: 100%; height: auto;" />
+            </f:facet>
+            <div style="position: absolute; top: 10px; left: 10px; color: white;">
+                <f:facet name="title">
+                    Loft en Rosales
+                </f:facet>
+                <f:facet name="subtitle">
+                    Apartamento
+                </f:facet>
+
+            </div>
+            <p:commandButton icon="pi pi-check" value="Ver más detalles" />
+
+        </p:card>
+        <p:card style="width: 300px; margin: 10px;">
+            <f:facet name="header">
+                <img alt="user header" src="./resources/img/apt_1.jpg" style="width: 100%; height: auto;" />
+            </f:facet>
+            <div style="position: absolute; top: 10px; left: 10px; color: white;">
+                <f:facet name="title">
+                    Descanso en Tabio
+                </f:facet>
+                <f:facet name="subtitle">
+                    Casa Campestre
+                </f:facet>
+
+            </div>
+            <p:commandButton icon="pi pi-check" value="Ver más detalles" />
+
+        </p:card>
+        <p:card style="width: 300px; margin: 10px;">
+            <f:facet name="header">
+                <img alt="user header" src="./resources/img/apt_1.jpg" style="width: 100%; height: auto;" />
+            </f:facet>
+            <div style="position: absolute; top: 10px; left: 10px; color: white;">
+                <f:facet name="title">
+                    Seccion abierta
+                </f:facet>
+                <f:facet name="subtitle">
+                    Gimnasio
+                </f:facet>
+
+            </div>
+            <p:commandButton icon="pi pi-check" value="Ver más detalles" />
+
+        </p:card>
+    </div>
+    <!--cierre cartas-->
+
+    <!--Modal - Compra-->
+    <p:dialog header="Espacio Residencial" widgetVar="myDialog" modal="true" width="600" height="400" closable="true"
+        style="color: darkgreen; background-color: rgb(213, 196, 173);">
+        <h:form id="modalForm">
+
+            <p:card>
+                <f:facet name="header">
+                    <!-- Establecer un tamaño específico para la imagen -->
+                    <img alt="user header" src="./resources/img/apt_1.jpg"
+                        style="width: 100%; height: 200px; object-fit: cover;" />
+                </f:facet>
+                <f:facet name="title">
+                    Compartido en Bosa
+                </f:facet>
+                <f:facet name="subtitle">
+                    Apartamento
+                </f:facet>
+
+                <h:panelGrid columns="2" styleClass="custom-table">
+                    <h:outputText value="Espacio" styleClass="label" />
+                    <h:outputText value="52 m²" styleClass="value" />
+
+                    <h:outputText value="Máximo de residentes admitidos" styleClass="label" />
+                    <h:outputText value="4" styleClass="value" />
+
+                    <h:outputText value="Tarifa de transporte" styleClass="label" />
+                    <h:outputText value="Sí" styleClass="value" />
+
+                    <h:outputText value="Espacios comunes" styleClass="label" />
+                    <h:outputText value="Sí" styleClass="value" />
+                </h:panelGrid>
+                <f:facet name="footer">
+                    <p:linkButton outcome="pasarelaPagos.xhtml" value="Comprar" style="margin-right:20px;"
+                        target="_blank">
+                        <f:param name="productId" value="10" />
+                    </p:linkButton>
+                </f:facet>
+            </p:card>
+        </h:form>
+    </p:dialog>
+    <!--cierre modal-->
+
+</h:body>
+
+</html>

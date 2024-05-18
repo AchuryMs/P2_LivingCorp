@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Iniciar Sesión | LivingCorp</title>
+    <link rel="shortcut icon"
+        href="https://www.pngkey.com/png/full/323-3232484_black-building-icon-png-building-white-icon-png.png" />
+
+    <style>
+        /* Inline CSS for simplicity */
+        .main-splitter .image-panel {
+            background-image: url('resources/img/building_2.jpg');
+            background-size: cover;
+            background-position: left;
+        }
+
+        .form-panel {
+            background-color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-form {
+            width: 100%;
+            /* Adjust based on actual layout needs */
+            max-width: 360px;
+            /* Ensures the form does not stretch too much */
+            margin: auto;
+        }
+
+        .login-panel {
+            padding: 20px;
+            color: white;
+            /* Ensures text is visible on a dark background */
+        }
+    </style>
+
+</h:head>
+
+<h:body>
+    <!--Imagen y formulario inicio de sesion-->
+    <p:splitter styleClass="main-splitter" style="height: 100vh; background-color: aquamarine;">
+        <p:splitterPanel styleClass="image-panel">
+            <!-- Background image is applied via CSS -->
+        </p:splitterPanel>
+        <p:splitterPanel styleClass="form-panel">
+            <h:form id="loginForm" styleClass="login-form">
+                <p:panel header="Iniciar Sesión" styleClass="ui-panel-shadow login-panel">
+                    <h:panelGrid columns="1">
+                        <p:outputLabel for="USERNAME" value="Usuario:" />
+                        <p:inputText id="USERNAME" required="true" label="Usuario" />
+
+                        <p:outputLabel for="PASSWORD" value="Contraseña:" />
+                        <p:password id="PASSWORD" required="true" label="Contraseña" feedback="false" />
+
+                        <p:commandButton value="INICIAR SESION" styleClass="ui-button-primary" update="@form" />
+                    </h:panelGrid>
+                </p:panel>
+            </h:form>
+            <p:linkButton outcome="index.xhtml" value="Inicio" styleClass="ui-button-raised ui-button-warning"
+                style="position: absolute; top:50px; right: 100px; width: 250px;" />
+            <p:linkButton outcome="register.xhtml" value="Registrar" styleClass="ui-button-raised ui-button-warning"
+                style="position: absolute; top:100px; right: 100px; width: 250px;" />
+        </p:splitterPanel>
+    </p:splitter>
+
+    
+</h:body>
+
+</html>

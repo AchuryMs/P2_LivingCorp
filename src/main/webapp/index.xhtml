@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Inicio| LivingCorp</title>
+    <link rel="shortcut icon"
+        href="https://www.pngkey.com/png/full/323-3232484_black-building-icon-png-building-white-icon-png.png" />
+
+    <style>
+        .main-text {
+            color: white;
+            position: absolute;
+            top: 200px;
+            left: 100px;
+        }
+    </style>
+
+</h:head>
+
+<h:body>
+    <!--Seccion Uno - Bienvenida-->
+    <h:form>
+        <p:graphicImage value="resources/img/building_1.jpg" style="width: 98vw; height: 98vh; margin: 0" />
+
+        <p:graphicImage value="resources/img/font-icon.png"
+            style="position: absolute; top: 50px; left: 100px; height: 60px;" />
+
+        <p:graphicImage value="resources/img/icon.png"
+            style="position: absolute; top: 50px; left: 800px; height: 70px;" />
+
+        <p:linkButton outcome="login.xhtml" value="Iniciar Sesión" styleClass="ui-button-raised ui-button-warning"
+            style="position: absolute; top:50px; right: 100px; width: 250px;" />
+
+        <h2 class="main-text" style="top: 300px;">busca en la</h2>
+        <h1 class="main-text" style="top: 350px;">MAYOR SELECCIÓN DE ALQUILERES</h1>
+        <h2 class="main-text" style="top: 400px;">del país</h2>
+
+        <section style="position: absolute; top: 500px; left: 100px">
+            <p:selectOneMenu id="city" value="#{basicView.city}" style="width:250px">
+                <f:selectItem itemLabel="Selecciona la ciudad" itemValue="" noSelectionOption="true"
+                    style="margin:0;" />
+                <f:selectItems value="#{basicView.cities}" />
+            </p:selectOneMenu>
+
+            <p:commandButton type="button" value="Buscar" styleClass="ui-button-raised ui-button-warning"
+                style="margin:0;" />
+
+        </section>
+    </h:form>
+    <!--Final Seccion Uno - Bienvenida-->
+
+    <!--Seccion Dos - Cartas-->
+    <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+        <p:card style="width: 300px; margin: 10px;">
+            <f:facet name="header">
+                <img alt="user header" src="./resources/img/apt_1.jpg" style="width: 100%; height: auto;" />
+            </f:facet>
+            <div style="position: absolute; top: 10px; left: 10px; color: white;">
+                <f:facet name="title">
+                    Compartido en bosa
+                </f:facet>
+                <f:facet name="subtitle">
+                    Apartamento
+                </f:facet>
+
+            </div>
+            <p:commandButton value="Abrir Modal" oncomplete="PF('inicio').show()" icon="pi pi-external-link" />
+
+        </p:card>
+        <p:card style="width: 300px; margin: 10px;">
+            <f:facet name="header">
+                <img alt="user header" src="./resources/img/apt_1.jpg" style="width: 100%; height: auto;" />
+            </f:facet>
+            <div style="position: absolute; top: 10px; left: 10px; color: white;">
+                <f:facet name="title">
+                    Loft en Rosales
+                </f:facet>
+                <f:facet name="subtitle">
+                    Apartamento
+                </f:facet>
+
+            </div>
+            <p:commandButton icon="pi pi-check" value="Ver más detalles" />
+
+        </p:card>
+        <p:card style="width: 300px; margin: 10px;">
+            <f:facet name="header">
+                <img alt="user header" src="./resources/img/apt_1.jpg" style="width: 100%; height: auto;" />
+            </f:facet>
+            <div style="position: absolute; top: 10px; left: 10px; color: white;">
+                <f:facet name="title">
+                    Descanso en Tabio
+                </f:facet>
+                <f:facet name="subtitle">
+                    Casa Campestre
+                </f:facet>
+
+            </div>
+            <p:commandButton icon="pi pi-check" value="Ver más detalles" />
+
+        </p:card>
+        <p:card style="width: 300px; margin: 10px;">
+            <f:facet name="header">
+                <img alt="user header" src="./resources/img/apt_1.jpg" style="width: 100%; height: auto;" />
+            </f:facet>
+            <div style="position: absolute; top: 10px; left: 10px; color: white;">
+                <f:facet name="title">
+                    Seccion abierta
+                </f:facet>
+                <f:facet name="subtitle">
+                    Gimnasio
+                </f:facet>
+
+            </div>
+            <p:commandButton icon="pi pi-check" value="Ver más detalles" />
+
+        </p:card>
+    </div>
+    <!--Final Seccion Dos - Cartas-->
+
+    <!--Model detalles-->
+    <p:dialog header="Espacio Residencial" widgetVar="inicio" modal="true" width="600" height="400" closable="true">
+        <h:form id="modalForm">
+
+            <p:card>
+                <f:facet name="header">
+                    <!-- Establecer un tamaño específico para la imagen -->
+                    <img alt="user header" src="./resources/img/apt_1.jpg"
+                        style="width: 100%; height: 200px; object-fit: cover;" />
+                </f:facet>
+                <f:facet name="title">
+                    Compartido en Bosa
+                </f:facet>
+                <f:facet name="subtitle">
+                    Apartamento
+                </f:facet>
+
+                <h:panelGrid columns="2" styleClass="custom-table">
+                    <h:outputText value="Espacio" styleClass="label" />
+                    <h:outputText value="52 m²" styleClass="value" />
+
+                    <h:outputText value="Máximo de residentes admitidos" styleClass="label" />
+                    <h:outputText value="4" styleClass="value" />
+
+                    <h:outputText value="Tarifa de transporte" styleClass="label" />
+                    <h:outputText value="Sí" styleClass="value" />
+
+                    <h:outputText value="Espacios comunes" styleClass="label" />
+                    <h:outputText value="Sí" styleClass="value" />
+                </h:panelGrid>
+                <f:facet name="footer">
+                    <p:linkButton outcome="login.xhtml" value="Iniciar Sesión" style="margin-right:20px;"
+                        target="_blank">
+                        <f:param name="productId" value="10" />
+                    </p:linkButton>
+                </f:facet>
+            </p:card>
+        </h:form>
+    </p:dialog>
+    <!--cierre modal-->
+</h:body>
+
+</html>

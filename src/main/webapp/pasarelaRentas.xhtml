@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Pasarela de Pagos</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .payment-panel {
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 400px;
+            margin: 50px auto;
+        }
+
+        .payment-panel h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #333333;
+        }
+
+        .payment-panel .input-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #666666;
+        }
+
+        .payment-panel .input-field {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .payment-panel .amount-input {
+            width: calc(100% - 100px);
+            float: left;
+        }
+
+        .payment-panel .currency-dropdown {
+            width: 100px;
+            float: right;
+        }
+
+        .payment-panel .pay-button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .payment-panel .pay-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+
+</h:head>
+<h:body>
+
+    <!--Pasarela-->
+    <h:form>
+        <div class="payment-panel">
+            <h2>Detalles de la renta</h2>
+            <h:panelGrid columns="2" cellpadding="5">
+                <h:outputText value="Nombre del titular:" styleClass="input-label" />
+                <p:inputText styleClass="input-field" />
+
+                <h:outputText value="Número de residentes:" styleClass="input-label" />
+                <p:inputText styleClass="input-field" />
+
+                <h:outputText value="Fecha de inicio:" styleClass="input-label" />
+                <p:inputText styleClass="input-field" />
+
+                <h:outputText value="Fecha de fin:" styleClass="input-label" />
+                <p:inputText styleClass="input-field" />
+
+                <h:outputText value="Cantidad a pagar:" styleClass="input-label" />
+                <p:inputText styleClass="input-field amount-input" />
+
+                <p:selectOneMenu styleClass="currency-dropdown">
+                    <f:selectItem itemLabel="USD" itemValue="USD" />
+                    <f:selectItem itemLabel="EUR" itemValue="EUR" />
+                </p:selectOneMenu>
+            </h:panelGrid>
+            <p:commandButton value="Tomar renta" styleClass="pay-button" action="#{paymentBean.processPayment}"
+                             oncomplete="PF('payment').show()" icon="pi pi-external-link" />
+        </div>
+    </h:form>
+    <!--Fin formulario pasarela-->
+
+    <!--Modal respuesta-->
+    <p:dialog header="Comprobante de renta" widgetVar="payment" modal="true" width="600" height="400" closable="true">
+        <h:form id="modalForm">
+
+            <p:card>
+                <f:facet name="title">
+                    ¡La propiedad se adquirió correctamente!
+                </f:facet>
+                <f:facet name="subtitle">
+                    Ya tienes la llave del lugar de tus sueños
+                </f:facet>
+                <f:facet name="footer">
+                    <p:linkButton outcome="inmuebleComprar.xhtml" value="volver a inicio" style="margin-right:20px;"/>
+                    <p:linkButton outcome="register.xhtml" value="registrarte" style="margin-right:20px;"/>
+                </f:facet>
+            </p:card>
+        </h:form>
+    </p:dialog>
+    <!--cierre modal-respuesta-->
+
+
+</h:body>
+
+</html>

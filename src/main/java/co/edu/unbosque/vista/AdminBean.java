@@ -19,23 +19,14 @@ public class AdminBean implements Serializable {
     private static final long serialVersionUID = 1L;
     ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
     HttpSession session = (HttpSession) externalContext.getSession(false);
-
-    private UsuarioWebDTO usuarioWebDTO = new UsuarioWebDTO();
     private PropiedadDTO propiedadDTO = new PropiedadDTO();
 
     @Inject
     private PropiedadServicios propiedadServicios;
 
-    public PropiedadDTO crearPropiedad(){
+    public PropiedadDTO crearPropiedad() {
+        System.out.println(propiedadDTO);
         return propiedadServicios.crearPropiedad(propiedadDTO);
-    }
-
-    public UsuarioWebDTO getUsuarioWebDTO() {
-        return usuarioWebDTO;
-    }
-
-    public void setUsuarioWebDTO(UsuarioWebDTO usuarioWebDTO) {
-        this.usuarioWebDTO = usuarioWebDTO;
     }
 
     public PropiedadDTO getPropiedadDTO() {

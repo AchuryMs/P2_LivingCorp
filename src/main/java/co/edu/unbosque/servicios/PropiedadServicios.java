@@ -2,6 +2,7 @@ package co.edu.unbosque.servicios;
 
 import co.edu.unbosque.modelo.dao.PropiedadDAO;
 import co.edu.unbosque.modelo.dto.PropiedadDTO;
+import co.edu.unbosque.modelo.dto.UsuarioWebDTO;
 import co.edu.unbosque.modelo.entidades.Propiedad;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;

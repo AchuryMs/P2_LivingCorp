@@ -1,11 +1,8 @@
 package co.edu.unbosque.servicios;
 
 import co.edu.unbosque.modelo.dao.RecursoDAO;
-import co.edu.unbosque.modelo.dao.UsuarioWebDAO;
 import co.edu.unbosque.modelo.dto.RecursoDTO;
-import co.edu.unbosque.modelo.dto.UsuarioWebDTO;
 import co.edu.unbosque.modelo.entidades.Recurso;
-import co.edu.unbosque.modelo.entidades.UsuarioWeb;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import org.modelmapper.ModelMapper;
@@ -22,7 +19,6 @@ public class RecursoServicios implements Serializable {
 
     @Inject
     RecursoDAO recursoDAO;
-
 
     public RecursoDTO crearRecurso(RecursoDTO recurso) {
         System.out.println("En el servicio creando: " + recurso.toString());

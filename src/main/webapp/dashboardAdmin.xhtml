@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Dashboard</title>
+    <h:outputStylesheet library="css" name="style.css"/>
+
+    <style>
+        /* Inline CSS for simplicidad */
+        .main-text {
+            color: white;
+            position: absolute;
+            top: 200px;
+            left: 100px;
+        }
+
+        .button-container {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: space-between;
+            width: 400px;
+            /* Ajusta el ancho según sea necesario */
+        }
+
+        .button-container .ui-button-warning {
+            margin: 0 10px;
+            /* Espacio entre los botones */
+        }
+    </style>
+
+</h:head>
+<h:body>
+
+    <!--Seccion Uno - Bienvenida-->
+    <h:form>
+        <p:graphicImage value="resources/img/apt_4.jpg" style="width: 98vw; height: 98vh; margin: 0"/>
+
+        <p:graphicImage value="resources/img/font-icon.png"
+                        style="position: absolute; top: 50px; left: 100px; height: 60px;"/>
+
+        <p:graphicImage value="resources/img/icon.png"
+                        style="position: absolute; top: 50px; left: 800px; height: 70px;"/>
+
+        <p:linkButton outcome="login.xhtml" value="Iniciar Sesión" styleClass="ui-button-raised ui-button-warning"
+                      style="position: absolute; top:50px; right: 100px; width: 250px;"/>
+
+        <h2 class="main-text" style="top: 300px;">Bienvenido </h2>
+        <h1 class="main-text" style="top: 350px;">Administrador</h1>
+        <h2 class="main-text" style="top: 400px;">A tu gestión de inmuebles</h2>
+    </h:form>
+    <!--Final Seccion Uno - Bienvenida-->
+
+    <h:form>
+        <p:panel header="Detalles de la Propiedad">
+            <h:panelGrid columns="2" cellpadding="5">
+
+                <h:outputLabel for="nombrePropiedad" value="Nombre:"/>
+                <p:inputText id="nombrePropiedad" value="#{adminBean.propiedadDTO.nombre_propiedad}" required="true"/>
+
+                <h:outputLabel for="ciudadPropiedad" value="Ciudad:"/>
+                <p:inputText id="ciudadPropiedad" value="#{adminBean.propiedadDTO.ciudad_propiedad}" required="true"/>
+
+                <h:outputLabel for="direccionPropiedad" value="Dirección:"/>
+                <p:inputText id="direccionPropiedad" value="#{adminBean.propiedadDTO.direccion_propiedad}"
+                             required="true"/>
+
+                <h:outputLabel for="areaPropiedad" value="Área (m²):"/>
+                <p:inputNumber id="areaPropiedad" value="#{adminBean.propiedadDTO.area_propiedad}" required="true"/>
+
+                <h:outputLabel for="precioPropiedad" value="Precio:"/>
+                <p:inputNumber id="precioPropiedad" value="#{adminBean.propiedadDTO.precio_propiedad}"
+                               required="true"/>
+
+                <h:outputLabel for="habitacionPropiedad" value="Habitaciones:"/>
+                <p:inputNumber id="habitacionPropiedad" value="#{adminBean.propiedadDTO.habitacion_propiedad}"
+                               required="true"/>
+
+                <h:outputLabel for="banosPropiedad" value="Baños:"/>
+                <p:inputNumber id="banosPropiedad" value="#{adminBean.propiedadDTO.baños_propiedad}" required="true"/>
+
+                <h:outputLabel for="descripcionPropiedad" value="Descripción:"/>
+                <p:inputTextarea id="descripcionPropiedad" value="#{adminBean.propiedadDTO.descripcion_propiedad}"
+                                 rows="4" cols="30"/>
+
+                <h:outputLabel for="administradorPropiedad" value="Administrador:"/>
+                <p:inputText id="administradorPropiedad" value="#{adminBean.propiedadDTO.administrador_propiedad}"
+                />
+
+                <h:outputLabel for="habilitadoPara" value="Habilitado para:"/>
+                <p:selectOneRadio value="#{adminBean.propiedadDTO.habilitado_rentar}">
+                    <f:selectItem itemLabel="Rentar" itemValue="true"/>
+                </p:selectOneRadio>
+                <p:selectOneRadio value="#{adminBean.propiedadDTO.habilitado_comprar}">
+                    <f:selectItem itemLabel="Comprar" itemValue="true"/>
+                </p:selectOneRadio>
+
+                <f:facet name="footer">
+                    <p:commandButton value="Guardar" action="#{adminBean.crearPropiedad}"/>
+                </f:facet>
+            </h:panelGrid>
+        </p:panel>
+    </h:form>
+</h:body>
+
+</html>

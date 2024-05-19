@@ -1,7 +1,5 @@
 package co.edu.unbosque.modelo.dto;
 
-import jakarta.persistence.Column;
-
 public class PropiedadDTO {
 
     private int id_propiedad;
@@ -13,14 +11,14 @@ public class PropiedadDTO {
     private int habitacion_propiedad;
     private int baños_propiedad;
     private String descripcion_propiedad;
-    private String admnistrador_propiedad;
+    private String administrador_propiedad;
     private boolean habilitado_rentar;
     private boolean habilitado_comprar;
 
     public PropiedadDTO() {
     }
 
-    public PropiedadDTO(int id_propiedad, String nombre_propiedad, String ciudad_propiedad, String direccion_propiedad, int area_propiedad, double precio_propiedad, int habitacion_propiedad, int baños_propiedad, String descripcion_propiedad, String admnistrador_propiedad, boolean habilitado_rentar, boolean habilitado_comprar) {
+    public PropiedadDTO(int id_propiedad, String nombre_propiedad, String ciudad_propiedad, String direccion_propiedad, int area_propiedad, double precio_propiedad, int habitacion_propiedad, int baños_propiedad, String descripcion_propiedad, String administrador_propiedad, boolean habilitado_rentar, boolean habilitado_comprar) {
         this.id_propiedad = id_propiedad;
         this.nombre_propiedad = nombre_propiedad;
         this.ciudad_propiedad = ciudad_propiedad;
@@ -30,7 +28,7 @@ public class PropiedadDTO {
         this.habitacion_propiedad = habitacion_propiedad;
         this.baños_propiedad = baños_propiedad;
         this.descripcion_propiedad = descripcion_propiedad;
-        this.admnistrador_propiedad = admnistrador_propiedad;
+        this.administrador_propiedad = administrador_propiedad;
         this.habilitado_rentar = habilitado_rentar;
         this.habilitado_comprar = habilitado_comprar;
     }
@@ -107,12 +105,12 @@ public class PropiedadDTO {
         this.descripcion_propiedad = descripcion_propiedad;
     }
 
-    public String getAdmnistrador_propiedad() {
-        return admnistrador_propiedad;
+    public String getAdministrador_propiedad() {
+        return administrador_propiedad;
     }
 
-    public void setAdmnistrador_propiedad(String admnistrador_propiedad) {
-        this.admnistrador_propiedad = admnistrador_propiedad;
+    public void setAdministrador_propiedad(String administrador_propiedad) {
+        this.administrador_propiedad = administrador_propiedad;
     }
 
     public boolean isHabilitado_rentar() {
@@ -143,7 +141,7 @@ public class PropiedadDTO {
                 ", habitacion_propiedad=" + habitacion_propiedad +
                 ", baños_propiedad=" + baños_propiedad +
                 ", descripcion_propiedad='" + descripcion_propiedad + '\'' +
-                ", admnistrador_propiedad='" + admnistrador_propiedad + '\'' +
+                ", admnistrador_propiedad='" + administrador_propiedad + '\'' +
                 ", habilitado_rentar=" + habilitado_rentar +
                 ", habilitado_comprar=" + habilitado_comprar +
                 '}';

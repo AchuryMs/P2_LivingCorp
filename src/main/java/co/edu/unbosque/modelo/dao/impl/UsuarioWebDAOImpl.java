@@ -5,6 +5,7 @@ import co.edu.unbosque.modelo.entidades.UsuarioWeb;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Stateless
@@ -15,10 +16,21 @@ public class UsuarioWebDAOImpl implements UsuarioWebDAO {
 
     @Override
     public UsuarioWeb crear(UsuarioWeb entidad) {
+        entidad.setUltimo_inicio_sesion(LocalDateTime.now());
+        entidad.setBloqueado(false);
+        entidad.setPropiedad_administrador(true);
+        entidad.setResidente_propietario(false);
         System.out.println("En el DAO implementado, Creando UsuarioWeb" + entidad.toString());
+
+        // Verificar si la entidad ya existe en la base de datos
+        if (em.find(UsuarioWeb.class, entidad.getNombre_usuario()) != null) {
+            throw new EntityExistsException("La entidad ya existe en la base de datos");
+        }
+
         em.persist(entidad);
-        return entidad;
+        return entidad; // Devolver la entidad persistida
     }
+
 
     @Override
     public UsuarioWeb actualizar(UsuarioWeb entidad) {

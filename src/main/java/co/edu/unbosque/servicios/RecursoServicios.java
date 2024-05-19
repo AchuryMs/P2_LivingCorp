@@ -1,7 +1,10 @@
 package co.edu.unbosque.servicios;
 
+import co.edu.unbosque.modelo.dao.PropiedadDAO;
 import co.edu.unbosque.modelo.dao.RecursoDAO;
+import co.edu.unbosque.modelo.dto.PropiedadDTO;
 import co.edu.unbosque.modelo.dto.RecursoDTO;
+import co.edu.unbosque.modelo.entidades.Propiedad;
 import co.edu.unbosque.modelo.entidades.Recurso;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
@@ -20,6 +23,7 @@ public class RecursoServicios implements Serializable {
     @Inject
     RecursoDAO recursoDAO;
 
+
     public RecursoDTO crearRecurso(RecursoDTO recurso) {
         System.out.println("En el servicio creando: " + recurso.toString());
         return modelMapper.map(recursoDAO.crear(modelMapper.map(recurso, Recurso.class)), RecursoDTO.class);
@@ -35,15 +39,18 @@ public class RecursoServicios implements Serializable {
         return modelMapper.map(recursoDAO.eliminar(modelMapper.map(recurso, Recurso.class)), RecursoDTO.class);
     }
 
-    public RecursoDTO buscarRecurso(RecursoDTO recurso) {
-        System.out.println("En el servicio buscando: " + recurso.toString());
+    public RecursoDTO buscarRecursoPorId(RecursoDTO recurso) {
+        System.out.println("En el servicio buscando el siguiente id: " + recurso.getId_recurso());
         return modelMapper.map(recursoDAO.buscar(recurso.getId_recurso()), RecursoDTO.class);
     }
+
     public Set<RecursoDTO> buscarRecursos() {
-        System.out.println("En el servicio buscando todos los recursos: ");
+        System.out.println("En el servicio buscando todas las propiedades: ");
         return recursoDAO.buscarTodos()
                 .stream()
                 .map(entity -> modelMapper.map(entity, RecursoDTO.class))
                 .collect(Collectors.toSet());
     }
+
+
 }

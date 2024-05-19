@@ -2,19 +2,20 @@ package co.edu.unbosque.servicios;
 
 import co.edu.unbosque.modelo.dao.PropiedadDAO;
 import co.edu.unbosque.modelo.dto.PropiedadDTO;
+import co.edu.unbosque.modelo.dto.UsuarioWebDTO;
 import co.edu.unbosque.modelo.entidades.Propiedad;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import org.modelmapper.ModelMapper;
 
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 @Stateless
 public class PropiedadServicios implements Serializable {
     private static final long serialVersionUID = 1L;
+
 
     public ModelMapper modelMapper = new ModelMapper();
 

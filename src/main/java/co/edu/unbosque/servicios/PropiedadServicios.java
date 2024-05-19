@@ -1,6 +1,7 @@
 package co.edu.unbosque.servicios;
 
 import co.edu.unbosque.modelo.dao.PropiedadDAO;
+import co.edu.unbosque.modelo.dao.UsuarioWebDAO;
 import co.edu.unbosque.modelo.dto.PropiedadDTO;
 import co.edu.unbosque.modelo.dto.UsuarioWebDTO;
 import co.edu.unbosque.modelo.entidades.Propiedad;
@@ -22,9 +23,14 @@ public class PropiedadServicios implements Serializable {
     @Inject
     PropiedadDAO propiedadDAO;
 
+    @Inject
+    UsuarioWebDAO usuarioWebDAO;
 
-    public PropiedadDTO crearPropiedad(PropiedadDTO propiedad) {
+
+    public PropiedadDTO crearPropiedad(PropiedadDTO propiedad, String nombre_admin) {
+        propiedad.setAdministrador_propiedad(modelMapper.map( usuarioWebDAO.buscar(nombre_admin), UsuarioWebDTO.class));
         System.out.println("En el servicio creando: " + propiedad.toString());
+
         return modelMapper.map(propiedadDAO.crear(modelMapper.map(propiedad, Propiedad.class)), PropiedadDTO.class);
     }
 
@@ -57,6 +63,15 @@ public class PropiedadServicios implements Serializable {
                 .stream()
                 .map(entity -> modelMapper.map(entity, PropiedadDTO.class))
                 .filter(propiedadDTO -> propiedadDTO.getCiudad_propiedad().equals(filtro))
+                .collect(Collectors.toSet());
+    }
+
+    public Set<PropiedadDTO> buscarPropiedadesPorAdmin(String filtro) {
+        System.out.println("En el servicio buscando todas las propiedades: ");
+        return propiedadDAO.buscarTodos()
+                .stream()
+                .map(entity -> modelMapper.map(entity, PropiedadDTO.class))
+                .filter(propiedadDTO -> propiedadDTO.getAdministrador_propiedad().equals(filtro))
                 .collect(Collectors.toSet());
     }
 

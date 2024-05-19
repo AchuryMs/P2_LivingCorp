@@ -2,6 +2,7 @@ package co.edu.unbosque.modelo.dao.impl;
 
 import co.edu.unbosque.modelo.dao.UsuarioWebDAO;
 import co.edu.unbosque.modelo.entidades.UsuarioWeb;
+import co.edu.unbosque.servicios.PropiedadServicios;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.*;
 
@@ -14,11 +15,11 @@ public class UsuarioWebDAOImpl implements UsuarioWebDAO {
     @PersistenceContext(unitName = "LivingDBP")
     private EntityManager em;
 
+
     @Override
     public UsuarioWeb crear(UsuarioWeb entidad) {
         entidad.setUltimo_inicio_sesion(LocalDateTime.now());
         entidad.setBloqueado(false);
-        entidad.setPropiedad_administrador(true);
         entidad.setResidente_propietario(false);
         System.out.println("En el DAO implementado, Creando UsuarioWeb" + entidad.toString());
 

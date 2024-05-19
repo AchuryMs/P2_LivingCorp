@@ -5,8 +5,8 @@ public class PropiedadException extends Exception{
         super();
     }
 
-    public PropiedadNoencontradaException(String message) {
-        super(message);
+    public void PropiedadNoencontradaException(String message) {
+
     }
 
     public PropiedadException(String message, Throwable cause) {

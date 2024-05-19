@@ -1,36 +1,22 @@
-package co.edu.unbosque.modelo.entidades;
+package co.edu.unbosque.modelo.dto;
 
-import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "WEB_USERS")
-public class UsuarioWeb {
-
-    @Id
-    @Column(name = "USER_NAME" , length = 25, nullable = false)
+public class UsuarioWebDTO {
     private String nombre_usuario;
-
-    @Column(name = "USER_EMAIL", length = 25, nullable = false)
     private String email_usuario;
-
-    @Column(name = "USER_PASSWORD", length = 25, nullable = false)
     private String contrasenia_usuario;
-    @Column(name = "LAST_LOGIN")
     private LocalDateTime ultimo_inicio_sesion;
-    @Column(name = "IS_BLOCKED")
     private boolean bloqueado;
-    @Column(name = "IS_PROPERTY_ADMIN")
     private boolean propiedad_administrador;
-    @Column(name = "IS_RESIDENT_PPRTY_OWNER")
     private boolean residente_propietario;
 
-    public UsuarioWeb() {
+    public UsuarioWebDTO() {
     }
 
-    public UsuarioWeb(String nombre_usuario, String email_usuario, String contrasenia_usuario, LocalDateTime ultimo_inicio_sesion, boolean bloqueado, boolean propiedad_administrador, boolean residente_propietario) {
+    public UsuarioWebDTO(String nombre_usuario, String email_usuario, String contrasenia_usuario, LocalDateTime ultimo_inicio_sesion, boolean bloqueado, boolean propiedad_administrador, boolean residente_propietario) {
         this.nombre_usuario = nombre_usuario;
         this.email_usuario = email_usuario;
         this.contrasenia_usuario = contrasenia_usuario;
@@ -98,7 +84,7 @@ public class UsuarioWeb {
 
     @Override
     public String toString() {
-        return "UsuarioWeb{" +
+        return "UsuarioWebDTO{" +
                 "nombre_usuario='" + nombre_usuario + '\'' +
                 ", email_usuario='" + email_usuario + '\'' +
                 ", contrasenia_usuario='" + contrasenia_usuario + '\'' +

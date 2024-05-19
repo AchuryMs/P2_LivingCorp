@@ -3,21 +3,23 @@ package co.edu.unbosque.modelo.entidades;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "WEB_USERS")
 public class UsuarioWeb {
 
     @Id
-    @Column(name = "USER_NAME")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "USER_NAME" , length = 25, nullable = false)
     private String nombre_usuario;
-    @Column(name = "USER_EMAIL")
+
+    @Column(name = "USER_EMAIL", length = 25, nullable = false)
     private String email_usuario;
-    @Column(name = "USER_PASSWORD")
+
+    @Column(name = "USER_PASSWORD", length = 25, nullable = false)
     private String contrasenia_usuario;
     @Column(name = "LAST_LOGIN")
-    private LocalDate ultimo_inicio_sesion;
+    private LocalDateTime ultimo_inicio_sesion;
     @Column(name = "IS_BLOCKED")
     private boolean bloqueado;
     @Column(name = "IS_PROPERTY_ADMIN")
@@ -28,7 +30,7 @@ public class UsuarioWeb {
     public UsuarioWeb() {
     }
 
-    public UsuarioWeb(String nombre_usuario, String email_usuario, String contrasenia_usuario, LocalDate ultimo_inicio_sesion, boolean bloqueado, boolean propiedad_administrador, boolean residente_propietario) {
+    public UsuarioWeb(String nombre_usuario, String email_usuario, String contrasenia_usuario, LocalDateTime ultimo_inicio_sesion, boolean bloqueado, boolean propiedad_administrador, boolean residente_propietario) {
         this.nombre_usuario = nombre_usuario;
         this.email_usuario = email_usuario;
         this.contrasenia_usuario = contrasenia_usuario;
@@ -62,11 +64,11 @@ public class UsuarioWeb {
         this.contrasenia_usuario = contrasenia_usuario;
     }
 
-    public LocalDate getUltimo_inicio_sesion() {
+    public LocalDateTime getUltimo_inicio_sesion() {
         return ultimo_inicio_sesion;
     }
 
-    public void setUltimo_inicio_sesion(LocalDate ultimo_inicio_sesion) {
+    public void setUltimo_inicio_sesion(LocalDateTime ultimo_inicio_sesion) {
         this.ultimo_inicio_sesion = ultimo_inicio_sesion;
     }
 

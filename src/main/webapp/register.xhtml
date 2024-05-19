@@ -46,21 +46,21 @@
             <!-- Background image is applied via CSS -->
         </p:splitterPanel>
         <p:splitterPanel styleClass="form-panel">
-            <h:form id="loginForm" styleClass="login-form">
+            <h:form id="registerForm" styleClass="login-form">
                 <p:panel header="Registrar" styleClass="ui-panel-shadow login-panel">
                     <h:panelGrid columns="1">
                         <p:outputLabel for="USERNAME" value="Usuario:" />
-                        <p:inputText id="USERNAME" required="true" label="Usuario" />
+                        <p:inputText id="USERNAME" required="true" label="Usuario" value="#{registerBean.usuarioWebDTO.nombre_usuario}"/>
 
                         <p:outputLabel for="EMAIL" value="Correo:" />
-                        <p:inputText id="EMAIL" required="true" label="Correo" />
+                        <p:inputText id="EMAIL" required="true" label="Correo" value="#{registerBean.usuarioWebDTO.email_usuario}" />
 
                         <p:outputLabel for="PASSWORD" value="Contraseña:" />
-                        <p:password id="PASSWORD" required="true" label="Contraseña" feedback="false" />
+                        <p:password id="PASSWORD" required="true" label="Contraseña" feedback="false" value="#{registerBean.usuarioWebDTO.contrasenia_usuario}" />
 
-                        <p:linkButton outcome="inmuebleRenta.xhtml" value="REGISTRAR"
-                            styleClass="ui-button-raised ui-button-success"
-                             />
+
+                        <p:commandButton icon="pi pi-check" value="Registrar" action="#{registerBean.crearUsuario()}" styleClass="ui-button-raised ui-button-warning"
+                                         style=" width: 250px;"/>
 
                     </h:panelGrid>
                 </p:panel>

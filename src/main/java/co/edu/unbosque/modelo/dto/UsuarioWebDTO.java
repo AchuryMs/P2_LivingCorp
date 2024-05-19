@@ -1,14 +1,14 @@
 package co.edu.unbosque.modelo.dto;
 
-import jakarta.persistence.Column;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class UsuarioWebDTO {
     private String nombre_usuario;
     private String email_usuario;
     private String contrasenia_usuario;
-    private LocalDate ultimo_inicio_sesion;
+    private LocalDateTime ultimo_inicio_sesion;
     private boolean bloqueado;
     private boolean propiedad_administrador;
     private boolean residente_propietario;
@@ -16,7 +16,7 @@ public class UsuarioWebDTO {
     public UsuarioWebDTO() {
     }
 
-    public UsuarioWebDTO(String nombre_usuario, String email_usuario, String contrasenia_usuario, LocalDate ultimo_inicio_sesion, boolean bloqueado, boolean propiedad_administrador, boolean residente_propietario) {
+    public UsuarioWebDTO(String nombre_usuario, String email_usuario, String contrasenia_usuario, LocalDateTime ultimo_inicio_sesion, boolean bloqueado, boolean propiedad_administrador, boolean residente_propietario) {
         this.nombre_usuario = nombre_usuario;
         this.email_usuario = email_usuario;
         this.contrasenia_usuario = contrasenia_usuario;
@@ -50,11 +50,11 @@ public class UsuarioWebDTO {
         this.contrasenia_usuario = contrasenia_usuario;
     }
 
-    public LocalDate getUltimo_inicio_sesion() {
+    public LocalDateTime getUltimo_inicio_sesion() {
         return ultimo_inicio_sesion;
     }
 
-    public void setUltimo_inicio_sesion(LocalDate ultimo_inicio_sesion) {
+    public void setUltimo_inicio_sesion(LocalDateTime ultimo_inicio_sesion) {
         this.ultimo_inicio_sesion = ultimo_inicio_sesion;
     }
 

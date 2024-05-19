@@ -21,7 +21,6 @@ public class LoginBean implements Serializable {
     ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
     HttpSession session = (HttpSession) externalContext.getSession(true);
 
-
     private UsuarioWebDTO usuarioWebDTO = new UsuarioWebDTO();
     @Inject
     private UsuarioWebServicios usuarioWebServicios;

@@ -1,45 +1,47 @@
 package co.edu.unbosque.servicios;
 
 import co.edu.unbosque.modelo.dao.PropiedadDAO;
+import co.edu.unbosque.modelo.dao.RecursoDAO;
 import co.edu.unbosque.modelo.dto.PropiedadDTO;
+import co.edu.unbosque.modelo.dto.RecursoDTO;
 import co.edu.unbosque.modelo.entidades.Propiedad;
+import co.edu.unbosque.modelo.entidades.Recurso;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import org.modelmapper.ModelMapper;
 
 import java.io.Serializable;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 @Stateless
-public class PropiedadServicios implements Serializable {
+public class RecursoServicios implements Serializable {
     private static final long serialVersionUID = 1L;
 
     public ModelMapper modelMapper = new ModelMapper();
 
     @Inject
-    PropiedadDAO propiedadDAO;
+    RecursoDAO recursoDAO;
 
 
-    public PropiedadDTO crearPropiedad(PropiedadDTO propiedad) {
-        System.out.println("En el servicio creando: " + propiedad.toString());
-        return modelMapper.map(propiedadDAO.crear(modelMapper.map(propiedad, Propiedad.class)), PropiedadDTO.class);
+    public RecursoDTO crearRecurso(RecursoDTO recurso) {
+        System.out.println("En el servicio creando: " + recurso.toString());
+        return modelMapper.map(recursoDAO.crear(modelMapper.map(recurso, Recurso.class)), RecursoDTO.class);
     }
 
-    public PropiedadDTO actualizarPropiedad(PropiedadDTO propiedad) {
-        System.out.println("En el servicio actualizando: " + propiedad.toString());
-        return modelMapper.map(propiedadDAO.actualizar(modelMapper.map(propiedad, Propiedad.class)), PropiedadDTO.class);
+    public RecursoDTO actualizarRecurso(RecursoDTO recurso) {
+        System.out.println("En el servicio actualizando: " + recurso.toString());
+        return modelMapper.map(recursoDAO.actualizar(modelMapper.map(recurso, Recurso.class)), RecursoDTO.class);
     }
 
-    public PropiedadDTO eliminarPropiedad(PropiedadDTO propiedad) {
-        System.out.println("En el servicio eliminando: " + propiedad.toString());
-        return modelMapper.map(propiedadDAO.eliminar(modelMapper.map(propiedad, Propiedad.class)), PropiedadDTO.class);
+    public RecursoDTO eliminarRecurso(RecursoDTO recurso) {
+        System.out.println("En el servicio eliminando: " + recurso.toString());
+        return modelMapper.map(recursoDAO.eliminar(modelMapper.map(recurso, Recurso.class)), RecursoDTO.class);
     }
 
-    public PropiedadDTO buscarPropiedadPorId(PropiedadDTO propiedad) {
-        System.out.println("En el servicio buscando el siguiente id: " + propiedad.getId_propiedad());
-        return modelMapper.map(propiedadDAO.buscar(propiedad.getId_propiedad()), PropiedadDTO.class);
+    public RecursoDTO buscarRecursoPorId(RecursoDTO recurso) {
+        System.out.println("En el servicio buscando el siguiente id: " + recurso.getId_recurso());
+        return modelMapper.map(recursoDAO.buscar(recurso.getId_recurso()), RecursoDTO.class);
     }
 
     public Set<PropiedadDTO> buscarPropiedades() {
@@ -50,13 +52,5 @@ public class PropiedadServicios implements Serializable {
                 .collect(Collectors.toSet());
     }
 
-    public Set<PropiedadDTO> buscarPropiedadesPorFiltro(String filtro) {
-        System.out.println("En el servicio buscando todas las propiedades: ");
-        return propiedadDAO.buscarTodos()
-                .stream()
-                .map(entity -> modelMapper.map(entity, PropiedadDTO.class))
-                .filter(propiedadDTO -> propiedadDTO.getCiudad_propiedad().equals(filtro))
-                .collect(Collectors.toSet());
-    }
 
 }

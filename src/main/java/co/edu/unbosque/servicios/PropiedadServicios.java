@@ -5,6 +5,7 @@ import co.edu.unbosque.modelo.dao.UsuarioWebDAO;
 import co.edu.unbosque.modelo.dto.PropiedadDTO;
 import co.edu.unbosque.modelo.dto.UsuarioWebDTO;
 import co.edu.unbosque.modelo.entidades.Propiedad;
+import co.edu.unbosque.modelo.entidades.UsuarioWeb;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import org.modelmapper.ModelMapper;
@@ -28,7 +29,9 @@ public class PropiedadServicios implements Serializable {
 
 
     public PropiedadDTO crearPropiedad(PropiedadDTO propiedad, String nombre_admin) {
-        propiedad.setAdministrador_propiedad(modelMapper.map( usuarioWebDAO.buscar(nombre_admin), UsuarioWebDTO.class));
+        UsuarioWeb admin = usuarioWebDAO.buscar(nombre_admin);
+        UsuarioWebDTO adminDto = modelMapper.map(admin, UsuarioWebDTO.class);
+        propiedad.setAdministrador_propiedad(adminDto);
         System.out.println("En el servicio creando: " + propiedad.toString());
 
         return modelMapper.map(propiedadDAO.crear(modelMapper.map(propiedad, Propiedad.class)), PropiedadDTO.class);

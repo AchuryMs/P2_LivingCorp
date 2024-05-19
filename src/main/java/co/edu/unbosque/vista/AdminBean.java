@@ -21,13 +21,14 @@ public class AdminBean implements Serializable {
     ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
     HttpSession session = (HttpSession) externalContext.getSession(false);
     private PropiedadDTO propiedadDTO = new PropiedadDTO();
+    private UsuarioWebDTO usuarioWebDTO = new UsuarioWebDTO();
 
     @Inject
     private PropiedadServicios propiedadServicios;
 
     public PropiedadDTO crearPropiedad() {
         System.out.println(propiedadDTO);
-        return propiedadServicios.crearPropiedad(propiedadDTO);
+        return propiedadServicios.crearPropiedad(propiedadDTO, usuarioWebDTO.getNombre_usuario());
     }
 
     public PropiedadDTO getPropiedadDTO() {

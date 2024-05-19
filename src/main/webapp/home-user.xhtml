@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Inicio| LivingCorp</title>
+    <link rel="shortcut icon"
+        href="https://www.pngkey.com/png/full/323-3232484_black-building-icon-png-building-white-icon-png.png" />
+
+    <style>
+        .main-text {
+            color: white;
+            position: absolute;
+            top: 200px;
+            left: 100px;
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <!--Seccion Uno - Bienvenida-->
+    <h:form>
+        <p:graphicImage value="resources/img/building_1.jpg" style="width: 98vw; height: 98vh; margin: 0" />
+
+        <p:graphicImage value="resources/img/font-icon.png"
+            style="position: absolute; top: 50px; left: 100px; height: 60px;" />
+
+        <p:graphicImage value="resources/img/icon.png"
+            style="position: absolute; top: 50px; left: 800px; height: 70px;" />
+
+
+
+        <p:linkButton outcome="login.xhtml" value="Iniciar Sesion" styleClass="ui-button-raised ui-button-warning"
+                      style="position: absolute; top:50px; right: 100px; width: 250px;" >
+            <f:param name="productId" value="10"/>
+        </p:linkButton>
+
+        <h2 class="main-text" style="top: 300px;">busca en la</h2>
+        <h1 class="main-text" style="top: 350px;">MAYOR SELECCIÓN DE ALQUILERES</h1>
+        <h2 class="main-text" style="top: 400px;">del país</h2>
+
+        <section style="position: absolute; top: 500px; left: 100px">
+            <h:outputText value="Welcome, !" />
+
+        </section>
+    </h:form>
+    <!--Final Seccion Uno - Bienvenida-->
+
+    <!--Seccion Dos - Cartas-->
+    <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+        <p:card style="width: 300px; margin: 10px;">
+            <f:facet name="header">
+                <img alt="user header" src="./resources/img/apt_1.jpg" style="width: 100%; height: auto;" />
+            </f:facet>
+            <div style="position: absolute; top: 10px; left: 10px; color: white;">
+                <f:facet name="title">
+                    Compartido en bosa
+                </f:facet>
+                <f:facet name="subtitle">
+                    Apartamento
+                </f:facet>
+
+            </div>
+            <p:commandButton icon="pi pi-check" value="Ver más detalles" />
+
+        </p:card>
+        <p:card style="width: 300px; margin: 10px;">
+            <f:facet name="header">
+                <img alt="user header" src="./resources/img/apt_1.jpg" style="width: 100%; height: auto;" />
+            </f:facet>
+            <div style="position: absolute; top: 10px; left: 10px; color: white;">
+                <f:facet name="title">
+                    Loft en Rosales
+                </f:facet>
+                <f:facet name="subtitle">
+                    Apartamento
+                </f:facet>
+
+            </div>
+            <p:commandButton icon="pi pi-check" value="Ver más detalles" />
+
+        </p:card>
+        <p:card style="width: 300px; margin: 10px;">
+            <f:facet name="header">
+                <img alt="user header" src="./resources/img/apt_1.jpg" style="width: 100%; height: auto;" />
+            </f:facet>
+            <div style="position: absolute; top: 10px; left: 10px; color: white;">
+                <f:facet name="title">
+                    Descanso en Tabio
+                </f:facet>
+                <f:facet name="subtitle">
+                    Casa Campestre
+                </f:facet>
+
+            </div>
+            <p:commandButton icon="pi pi-check" value="Ver más detalles" />
+
+        </p:card>
+        <p:card style="width: 300px; margin: 10px;">
+            <f:facet name="header">
+                <img alt="user header" src="./resources/img/apt_1.jpg" style="width: 100%; height: auto;" />
+            </f:facet>
+            <div style="position: absolute; top: 10px; left: 10px; color: white;">
+                <f:facet name="title">
+                    Seccion abierta
+                </f:facet>
+                <f:facet name="subtitle">
+                    Gimnasio
+                </f:facet>
+
+            </div>
+            <p:commandButton icon="pi pi-check" value="Ver más detalles" />
+
+        </p:card>
+    </div>
+    <!--Seccion Tres - tabla de prueba-->
+
+    <div>
+        <h:form>
+            <div class="card">
+                <p:dataTable var="PROPERTY" value="#{indexBean.tempWebProperties}">
+                    <p:column headerText="Nombre">
+                        <h:outputText value="#{PROPERTY.name}" />
+                    </p:column>
+
+                    <p:column headerText="Direccion">
+                        <h:outputText value="#{PROPERTY.address}" />
+                    </p:column>
+
+                    <p:column headerText="Area">
+                        <h:outputText value="#{PROPERTY.area}" />
+                    </p:column>
+
+                    <p:column headerText="Precio">
+                        <h:outputText value="#{PROPERTY.price}" />
+                    </p:column>
+                </p:dataTable>
+            </div>
+        </h:form>
+    </div>
+
+</h:body>
+
+</html>

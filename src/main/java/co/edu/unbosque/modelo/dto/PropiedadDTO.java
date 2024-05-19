@@ -1,5 +1,6 @@
 package co.edu.unbosque.modelo.dto;
 
+
 public class PropiedadDTO {
 
     private int id_propiedad;
@@ -11,14 +12,14 @@ public class PropiedadDTO {
     private int habitacion_propiedad;
     private int baños_propiedad;
     private String descripcion_propiedad;
-    private String administrador_propiedad;
+    private UsuarioWebDTO administrador_propiedad;
     private boolean habilitado_rentar;
     private boolean habilitado_comprar;
 
     public PropiedadDTO() {
     }
 
-    public PropiedadDTO(int id_propiedad, String nombre_propiedad, String ciudad_propiedad, String direccion_propiedad, int area_propiedad, double precio_propiedad, int habitacion_propiedad, int baños_propiedad, String descripcion_propiedad, String administrador_propiedad, boolean habilitado_rentar, boolean habilitado_comprar) {
+    public PropiedadDTO(int id_propiedad, String nombre_propiedad, String ciudad_propiedad, String direccion_propiedad, int area_propiedad, double precio_propiedad, int habitacion_propiedad, int baños_propiedad, String descripcion_propiedad, UsuarioWebDTO administrador_propiedad, boolean habilitado_rentar, boolean habilitado_comprar) {
         this.id_propiedad = id_propiedad;
         this.nombre_propiedad = nombre_propiedad;
         this.ciudad_propiedad = ciudad_propiedad;
@@ -105,11 +106,11 @@ public class PropiedadDTO {
         this.descripcion_propiedad = descripcion_propiedad;
     }
 
-    public String getAdministrador_propiedad() {
+    public UsuarioWebDTO getAdministrador_propiedad() {
         return administrador_propiedad;
     }
 
-    public void setAdministrador_propiedad(String administrador_propiedad) {
+    public void setAdministrador_propiedad(UsuarioWebDTO administrador_propiedad) {
         this.administrador_propiedad = administrador_propiedad;
     }
 

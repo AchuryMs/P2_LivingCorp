@@ -4,39 +4,39 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "WEB_USERS")
 public class UsuarioWeb {
 
     @Id
-    @Column(name = "USER_NAME" , length = 25, nullable = false)
+    @Column(name = "USER_NAME", length = 25, nullable = false)
     private String nombre_usuario;
-
     @Column(name = "USER_EMAIL", length = 25, nullable = false)
     private String email_usuario;
-
     @Column(name = "USER_PASSWORD", length = 25, nullable = false)
     private String contrasenia_usuario;
     @Column(name = "LAST_LOGIN")
     private LocalDateTime ultimo_inicio_sesion;
     @Column(name = "IS_BLOCKED")
     private boolean bloqueado;
-    @Column(name = "IS_PROPERTY_ADMIN")
-    private boolean propiedad_administrador;
+    @OneToMany(mappedBy = "id_propiedad")
+    private Set<Propiedad> propiedadesAdministradas;
     @Column(name = "IS_RESIDENT_PPRTY_OWNER")
     private boolean residente_propietario;
 
     public UsuarioWeb() {
     }
 
-    public UsuarioWeb(String nombre_usuario, String email_usuario, String contrasenia_usuario, LocalDateTime ultimo_inicio_sesion, boolean bloqueado, boolean propiedad_administrador, boolean residente_propietario) {
+    public UsuarioWeb(String nombre_usuario, String email_usuario, String contrasenia_usuario, LocalDateTime ultimo_inicio_sesion, boolean bloqueado, Set<Propiedad> propiedadesAdministradas, boolean residente_propietario) {
         this.nombre_usuario = nombre_usuario;
         this.email_usuario = email_usuario;
         this.contrasenia_usuario = contrasenia_usuario;
         this.ultimo_inicio_sesion = ultimo_inicio_sesion;
         this.bloqueado = bloqueado;
-        this.propiedad_administrador = propiedad_administrador;
+        this.propiedadesAdministradas = propiedadesAdministradas;
         this.residente_propietario = residente_propietario;
     }
 
@@ -80,12 +80,12 @@ public class UsuarioWeb {
         this.bloqueado = bloqueado;
     }
 
-    public boolean isPropiedad_administrador() {
-        return propiedad_administrador;
+    public Set<Propiedad> getPropiedadesAdministradas() {
+        return propiedadesAdministradas;
     }
 
-    public void setPropiedad_administrador(boolean propiedad_administrador) {
-        this.propiedad_administrador = propiedad_administrador;
+    public void setPropiedadesAdministradas(Set<Propiedad> propiedadesAdministradas) {
+        this.propiedadesAdministradas = propiedadesAdministradas;
     }
 
     public boolean isResidente_propietario() {
@@ -104,7 +104,7 @@ public class UsuarioWeb {
                 ", contrasenia_usuario='" + contrasenia_usuario + '\'' +
                 ", ultimo_inicio_sesion=" + ultimo_inicio_sesion +
                 ", bloqueado=" + bloqueado +
-                ", propiedad_administrador=" + propiedad_administrador +
+                ", propiedadesAdministradas=" + propiedadesAdministradas +
                 ", residente_propietario=" + residente_propietario +
                 '}';
     }

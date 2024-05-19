@@ -1,5 +1,6 @@
 package co.edu.unbosque.vista;
 
+import co.edu.unbosque.excepciones.UsuarioWebException;
 import co.edu.unbosque.modelo.dto.UsuarioWebDTO;
 import co.edu.unbosque.servicios.UsuarioWebServicios;
 import jakarta.annotation.ManagedBean;
@@ -16,15 +17,33 @@ import java.io.Serializable;
 @SessionScoped
 public class LoginBean implements Serializable {
     private static final long serialVersionUID = 1L;
-    private UsuarioWebDTO usuarioWebDTO = new UsuarioWebDTO();
-    @Inject
-    private UsuarioWebServicios usuarioWebServicios = new UsuarioWebServicios();
 
     ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-    HttpSession session = (HttpSession) externalContext.getSession(false);
+    HttpSession session = (HttpSession) externalContext.getSession(true);
 
-    public void iniciarSesion(){
-        usuarioWebServicios.buscarUsuario(usuarioWebDTO);
+
+    private UsuarioWebDTO usuarioWebDTO = new UsuarioWebDTO();
+    @Inject
+    private UsuarioWebServicios usuarioWebServicios;
+
+    public String iniciarSesion() {
+        System.out.println("Iniciando sesion con estas credenciales: " + usuarioWebDTO.getNombre_usuario() + usuarioWebDTO.getContrasenia_usuario() );
+
+        if (usuarioWebServicios.buscarUsuario(usuarioWebDTO.getNombre_usuario() )!= null){
+            System.out.println("LOGUEADO");
+        session.setAttribute("usuario", usuarioWebDTO.getNombre_usuario());
+            return "dashboardAdmin.xhtml";
+        }
+        System.out.println("NO LOGUEADO");
+        return "index.xhtml";
+
     }
 
+    public UsuarioWebDTO getUsuarioWebDTO() {
+        return usuarioWebDTO;
+    }
+
+    public void setUsuarioWebDTO(UsuarioWebDTO usuarioWebDTO) {
+        this.usuarioWebDTO = usuarioWebDTO;
+    }
 }

@@ -1,10 +1,8 @@
 package co.edu.unbosque.vista;
 
 import co.edu.unbosque.modelo.dto.PropiedadDTO;
-import co.edu.unbosque.modelo.dto.UsuarioWebDTO;
 import co.edu.unbosque.servicios.PropiedadServicios;
 import jakarta.enterprise.context.RequestScoped;
-import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.context.ExternalContext;
 import jakarta.faces.context.FacesContext;
 import jakarta.inject.Inject;
@@ -26,8 +24,8 @@ public class AdminBean implements Serializable {
     private PropiedadServicios propiedadServicios;
 
     public PropiedadDTO crearPropiedad() {
-        System.out.println(propiedadDTO);
-        return propiedadServicios.crearPropiedad(propiedadDTO);
+        System.out.println("En el servicio, creando la propiedad: "+ propiedadDTO.toString());
+        return propiedadServicios.crearPropiedad(propiedadDTO, (String) session.getAttribute("nombre"));
     }
 
     public PropiedadDTO getPropiedadDTO() {

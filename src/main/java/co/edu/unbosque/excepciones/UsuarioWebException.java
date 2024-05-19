@@ -5,8 +5,8 @@ public class UsuarioWebException extends Exception{
         super();
     }
 
-    public void PropiedadNoencontradaException(String message) {
-
+    public UsuarioWebException(String message) {
+        super (message);
     }
 
     public UsuarioWebException(String message, Throwable cause) {

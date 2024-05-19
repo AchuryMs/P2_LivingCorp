@@ -15,8 +15,8 @@ import java.util.stream.Collectors;
 public class PropiedadServicios implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @Inject
-    public ModelMapper modelMapper;
+
+    public ModelMapper modelMapper = new ModelMapper();
 
     @Inject
     PropiedadDAO propiedadDAO;

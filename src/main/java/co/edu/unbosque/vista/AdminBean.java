@@ -3,14 +3,12 @@ package co.edu.unbosque.vista;
 import co.edu.unbosque.modelo.dto.PropiedadDTO;
 import co.edu.unbosque.modelo.dto.UsuarioWebDTO;
 import co.edu.unbosque.servicios.PropiedadServicios;
-import jakarta.enterprise.context.RequestScoped;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.context.ExternalContext;
 import jakarta.faces.context.FacesContext;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.servlet.http.HttpSession;
-import lombok.Getter;
 
 import java.io.Serializable;
 
@@ -32,6 +30,19 @@ public class AdminBean implements Serializable {
         return propiedadServicios.crearPropiedad(propiedadDTO);
     }
 
+    public UsuarioWebDTO getUsuarioWebDTO() {
+        return usuarioWebDTO;
+    }
 
+    public void setUsuarioWebDTO(UsuarioWebDTO usuarioWebDTO) {
+        this.usuarioWebDTO = usuarioWebDTO;
+    }
 
+    public PropiedadDTO getPropiedadDTO() {
+        return propiedadDTO;
+    }
+
+    public void setPropiedadDTO(PropiedadDTO propiedadDTO) {
+        this.propiedadDTO = propiedadDTO;
+    }
 }

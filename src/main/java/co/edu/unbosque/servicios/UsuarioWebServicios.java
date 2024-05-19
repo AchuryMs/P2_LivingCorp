@@ -8,7 +8,6 @@ import jakarta.inject.Inject;
 import org.modelmapper.ModelMapper;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -22,13 +21,9 @@ public class UsuarioWebServicios implements Serializable {
     UsuarioWebDAO usuarioWebDAO;
 
 
-    public void crearUsuario(UsuarioWebDTO usuario) {
-        usuario.setUltimo_inicio_sesion(LocalDateTime.now());
-        usuario.setBloqueado(false);
-        usuario.setPropiedad_administrador(true);
-        usuario.setResidente_propietario(false);
+    public UsuarioWebDTO crearUsuario(UsuarioWebDTO usuario) {
         System.out.println("En el servicio creando: " + usuario.toString());
-        modelMapper.map(usuarioWebDAO.crear(modelMapper.map(usuario, UsuarioWeb.class)), UsuarioWebDTO.class);
+        return modelMapper.map(usuarioWebDAO.crear(modelMapper.map(usuario, UsuarioWeb.class)), UsuarioWebDTO.class);
     }
 
     public UsuarioWebDTO actualizarUsuario(UsuarioWebDTO usuario) {

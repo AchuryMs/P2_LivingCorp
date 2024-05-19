@@ -10,11 +10,13 @@ import java.time.LocalDateTime;
 public class UsuarioWeb {
 
     @Id
-    @Column(name = "USER_NAME" , length = 50, nullable = false)
+    @Column(name = "USER_NAME" , length = 25, nullable = false)
     private String nombre_usuario;
-    @Column(name = "USER_EMAIL", length = 50, nullable = false)
+
+    @Column(name = "USER_EMAIL", length = 25, nullable = false)
     private String email_usuario;
-    @Column(name = "USER_PASSWORD", length = 50, nullable = false)
+
+    @Column(name = "USER_PASSWORD", length = 25, nullable = false)
     private String contrasenia_usuario;
     @Column(name = "LAST_LOGIN")
     private LocalDateTime ultimo_inicio_sesion;

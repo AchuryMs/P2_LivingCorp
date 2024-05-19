@@ -30,9 +30,11 @@ public class PropiedadServicios implements Serializable {
 
     public PropiedadDTO crearPropiedad(PropiedadDTO propiedad, String nombre_admin) {
         UsuarioWeb admin = usuarioWebDAO.buscar(nombre_admin);
+        System.out.println("Creando propiedad, usuario encontrado " + admin.getNombre_usuario());
         UsuarioWebDTO adminDto = modelMapper.map(admin, UsuarioWebDTO.class);
         propiedad.setAdministrador_propiedad(adminDto);
-        System.out.println("En el servicio creando: " + propiedad.toString());
+        System.out.println("seteando: " + adminDto.toString());
+        System.out.println("Creando propiedad, usuario encontrado " + admin.getNombre_usuario());
 
         return modelMapper.map(propiedadDAO.crear(modelMapper.map(propiedad, Propiedad.class)), PropiedadDTO.class);
     }

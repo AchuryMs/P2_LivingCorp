@@ -44,11 +44,11 @@ public class RecursoServicios implements Serializable {
         return modelMapper.map(recursoDAO.buscar(recurso.getId_recurso()), RecursoDTO.class);
     }
 
-    public Set<PropiedadDTO> buscarPropiedades() {
+    public Set<RecursoDTO> buscarRecursos() {
         System.out.println("En el servicio buscando todas las propiedades: ");
-        return propiedadDAO.buscarTodos()
+        return recursoDAO.buscarTodos()
                 .stream()
-                .map(entity -> modelMapper.map(entity, PropiedadDTO.class))
+                .map(entity -> modelMapper.map(entity, RecursoDTO.class))
                 .collect(Collectors.toSet());
     }
 

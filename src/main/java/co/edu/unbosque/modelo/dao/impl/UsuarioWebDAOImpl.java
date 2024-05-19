@@ -1,12 +1,9 @@
 package co.edu.unbosque.modelo.dao.impl;
 
 import co.edu.unbosque.modelo.dao.UsuarioWebDAO;
-import co.edu.unbosque.modelo.entidades.Propiedad;
 import co.edu.unbosque.modelo.entidades.UsuarioWeb;
 import jakarta.ejb.Stateless;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.TypedQuery;
+import jakarta.persistence.*;
 
 import java.util.List;
 
@@ -45,7 +42,8 @@ public class UsuarioWebDAOImpl implements UsuarioWebDAO {
     @Override
     public List<UsuarioWeb> buscarTodos() {
         System.out.println("En la implementacion de propiedad, consultando todos");
-        TypedQuery<UsuarioWeb> query = em.createQuery("SELECT all FROM UsuarioWeb all", UsuarioWeb.class);
+        TypedQuery<UsuarioWeb> query = em.createQuery("SELECT u FROM UsuarioWeb u", UsuarioWeb.class);
         return query.getResultList();
     }
+
 }

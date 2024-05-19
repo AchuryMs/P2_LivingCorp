@@ -1,15 +1,14 @@
 package co.edu.unbosque.servicios;
 
 import co.edu.unbosque.modelo.dao.UsuarioWebDAO;
-import co.edu.unbosque.modelo.dto.PropiedadDTO;
 import co.edu.unbosque.modelo.dto.UsuarioWebDTO;
-import co.edu.unbosque.modelo.entidades.Propiedad;
 import co.edu.unbosque.modelo.entidades.UsuarioWeb;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import org.modelmapper.ModelMapper;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -17,16 +16,19 @@ import java.util.stream.Collectors;
 public class UsuarioWebServicios implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @Inject
-    public ModelMapper modelMapper;
+    public ModelMapper modelMapper = new ModelMapper();
 
     @Inject
     UsuarioWebDAO usuarioWebDAO;
 
 
-    public UsuarioWebDTO crearUsuario(UsuarioWebDTO usuario) {
+    public void crearUsuario(UsuarioWebDTO usuario) {
+        usuario.setUltimo_inicio_sesion(LocalDateTime.now());
+        usuario.setBloqueado(false);
+        usuario.setPropiedad_administrador(true);
+        usuario.setResidente_propietario(false);
         System.out.println("En el servicio creando: " + usuario.toString());
-        return modelMapper.map(usuarioWebDAO.crear(modelMapper.map(usuario, UsuarioWeb.class)), UsuarioWebDTO.class);
+        modelMapper.map(usuarioWebDAO.crear(modelMapper.map(usuario, UsuarioWeb.class)), UsuarioWebDTO.class);
     }
 
     public UsuarioWebDTO actualizarUsuario(UsuarioWebDTO usuario) {

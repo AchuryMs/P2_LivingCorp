@@ -11,7 +11,7 @@ import java.util.List;
 
 @Named
 @ViewScoped
-public class DashboardView implements Serializable {
+public class PropertyBean implements Serializable {
     private List<String> messages;
     private String newMessage;
 

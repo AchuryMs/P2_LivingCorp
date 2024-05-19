@@ -16,14 +16,14 @@
             <p:panel header="Agregar Mensaje" styleClass="dashboard-section">
                 <h:panelGrid columns="2" cellpadding="5">
                     <h:outputLabel for="message" value="Mensaje:" />
-                    <p:inputText id="message" value="#{dashboardView.newMessage}" style="width:100%"/>
-                    <p:commandButton value="Agregar" action="#{dashboardView.addMessage}" update="messages"/>
+                    <p:inputText id="message" value="#{propertyBean.newMessage}" style="width:100%"/>
+                    <p:commandButton value="Agregar" action="#{propertyBean.addMessage}" update="messages"/>
                 </h:panelGrid>
             </p:panel>
 
             <!-- Sección de Tabla -->
             <p:panel header="Mensajes" styleClass="dashboard-section">
-                <p:dataTable id="messages" value="#{dashboardView.messages}" var="msg" style="width:100%">
+                <p:dataTable id="messages" value="#{propertyBean.messages}" var="msg" style="width:100%">
                     <p:column headerText="Mensaje">
                         <h:outputText value="#{msg}"/>
                     </p:column>
@@ -35,6 +35,26 @@
             </p:panel>
 
         </p:panelGrid>
+    </h:form>
+
+    <h:form id="registerForm" styleClass="login-form">
+        <p:panel header="Registrar" styleClass="ui-panel-shadow login-panel">
+            <h:panelGrid columns="1">
+                <p:outputLabel for="USERNAME" value="Usuario:" />
+                <p:inputText id="USERNAME" required="true" label="Usuario" value="#{registerBean.usuarioWebDTO.nombre_usuario}"/>
+
+                <p:outputLabel for="EMAIL" value="Correo:" />
+                <p:inputText id="EMAIL" required="true" label="Correo" value="#{registerBean.usuarioWebDTO.email_usuario}" />
+
+                <p:outputLabel for="PASSWORD" value="Contraseña:" />
+                <p:password id="PASSWORD" required="true" label="Contraseña" feedback="false" value="#{registerBean.usuarioWebDTO.contrasenia_usuario}" />
+
+
+                <p:commandButton icon="pi pi-check" value="Registrar" action="#{registerBean.crearUsuario()}" styleClass="ui-button-raised ui-button-warning"
+                                 style=" width: 250px;"/>
+
+            </h:panelGrid>
+        </p:panel>
     </h:form>
 </h:body>
 </html>

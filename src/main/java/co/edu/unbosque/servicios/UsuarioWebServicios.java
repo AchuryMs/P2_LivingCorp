@@ -39,8 +39,10 @@ public class UsuarioWebServicios implements Serializable {
         return modelMapper.map(usuarioWebDAO.eliminar(modelMapper.map(usuario, UsuarioWeb.class)), UsuarioWebDTO.class);
     }
 
-
-
+    public UsuarioWebDTO buscarUsuario(UsuarioWebDTO usuario) {
+        System.out.println("En el servicio buscando: " + usuario.toString());
+        return modelMapper.map(usuarioWebDAO.buscar(usuario.getNombre_usuario()), UsuarioWebDTO.class);
+    }
     public Set<UsuarioWebDTO> buscarUsuarios() {
         System.out.println("En el servicio buscando todas las propiedades: ");
         return usuarioWebDAO.buscarTodos()
@@ -48,6 +50,4 @@ public class UsuarioWebServicios implements Serializable {
                 .map(entity -> modelMapper.map(entity, UsuarioWebDTO.class))
                 .collect(Collectors.toSet());
     }
-
-
 }

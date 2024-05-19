@@ -1,10 +1,8 @@
 package co.edu.unbosque.modelo.dto;
 
-import jakarta.persistence.Column;
-
 import java.time.LocalDate;
 
-public class ReservaRecursDTO {
+public class ReservaRecursoDTO {
 
     private int  id_reserva;
     private String nombre_usuario;
@@ -14,10 +12,10 @@ public class ReservaRecursDTO {
     private double precio_reserva;
     private boolean pago_completado;
 
-    public ReservaRecursDTO() {
+    public ReservaRecursoDTO() {
     }
 
-    public ReservaRecursDTO(int id_reserva, String nombre_usuario, LocalDate fecha_reserva, LocalDate fecha_inicio, LocalDate fecha_fin, double precio_reserva, boolean pago_completado) {
+    public ReservaRecursoDTO(int id_reserva, String nombre_usuario, LocalDate fecha_reserva, LocalDate fecha_inicio, LocalDate fecha_fin, double precio_reserva, boolean pago_completado) {
         this.id_reserva = id_reserva;
         this.nombre_usuario = nombre_usuario;
         this.fecha_reserva = fecha_reserva;

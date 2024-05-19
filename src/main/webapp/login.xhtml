@@ -50,12 +50,12 @@
                 <p:panel header="Iniciar Sesión" styleClass="ui-panel-shadow login-panel">
                     <h:panelGrid columns="1">
                         <p:outputLabel for="USERNAME" value="Usuario:" />
-                        <p:inputText id="USERNAME" required="true" label="Usuario" />
+                        <p:inputText id="USERNAME" required="true" label="Usuario" value="#{loginBean.usuarioWebDTO.nombre_usuario}"/>
 
                         <p:outputLabel for="PASSWORD" value="Contraseña:" />
-                        <p:password id="PASSWORD" required="true" label="Contraseña" feedback="false" />
-
-                        <p:commandButton value="INICIAR SESION" styleClass="ui-button-primary" update="@form" />
+                        <p:password id="PASSWORD" required="true" label="Contraseña" feedback="false" value="#{loginBean.usuarioWebDTO.contrasenia_usuario}" />
+                        <p:commandButton icon="pi pi-check" value="Ingresar" action="#{loginBean.iniciarSesion()}" styleClass="ui-button-raised ui-button-warning"
+                                         style=" width: 250px;"/>
                     </h:panelGrid>
                 </p:panel>
             </h:form>

@@ -39,13 +39,13 @@ public class RecursoServicios implements Serializable {
         return modelMapper.map(recursoDAO.eliminar(modelMapper.map(recurso, Recurso.class)), RecursoDTO.class);
     }
 
-    public RecursoDTO buscarRecursoPorId(RecursoDTO recurso) {
-        System.out.println("En el servicio buscando el siguiente id: " + recurso.getId_recurso());
-        return modelMapper.map(recursoDAO.buscar(recurso.getId_recurso()), RecursoDTO.class);
+    public RecursoDTO buscarRecursoPorId(Integer id) {
+        System.out.println("En el servicio buscando el siguiente id: " + id);
+        return modelMapper.map(recursoDAO.buscar(id), RecursoDTO.class);
     }
 
     public Set<RecursoDTO> buscarRecursos() {
-        System.out.println("En el servicio buscando todas las propiedades: ");
+        System.out.println("En el servicio buscando todas los recursos: ");
         return recursoDAO.buscarTodos()
                 .stream()
                 .map(entity -> modelMapper.map(entity, RecursoDTO.class))

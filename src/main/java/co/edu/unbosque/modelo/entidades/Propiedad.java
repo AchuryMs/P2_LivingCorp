@@ -24,10 +24,11 @@ public class Propiedad {
     private int habitacion_propiedad;
     @Column(name = "PROPERTY_BATHROOMS")
     private int baños_propiedad;
-    @Column(name = "PROPERTY_DESCRIPTION")
+    @Column(name = "PROPERTY_DESCRIPCION")
     private String descripcion_propiedad;
-    @Column(name = "PROPERTY_ADMIN")
-    private String admnistrador_propiedad;
+    @ManyToOne
+    @JoinColumn(name = "PROPERTY_ADMIN", referencedColumnName = "USER_NAME")
+    private UsuarioWeb administrador_propiedad;
     @Column(name = "IS_AVAILABLE_FOR_RENT")
     private boolean habilitado_rentar;
     @Column(name = "IS_AVAILABLE_FOR_SALE")
@@ -36,7 +37,7 @@ public class Propiedad {
     public Propiedad() {
     }
 
-    public Propiedad(int id_propiedad, String nombre_propiedad, String ciudad_propiedad, String direccion_propiedad, int area_propiedad, double precio_propiedad, int habitacion_propiedad, int baños_propiedad, String descripcion_propiedad, String admnistrador_propiedad, boolean habilitado_rentar, boolean habilitado_comprar) {
+    public Propiedad(int id_propiedad, String nombre_propiedad, String ciudad_propiedad, String direccion_propiedad, int area_propiedad, double precio_propiedad, int habitacion_propiedad, int baños_propiedad, String descripcion_propiedad, UsuarioWeb administrador_propiedad, boolean habilitado_rentar, boolean habilitado_comprar) {
         this.id_propiedad = id_propiedad;
         this.nombre_propiedad = nombre_propiedad;
         this.ciudad_propiedad = ciudad_propiedad;
@@ -46,7 +47,7 @@ public class Propiedad {
         this.habitacion_propiedad = habitacion_propiedad;
         this.baños_propiedad = baños_propiedad;
         this.descripcion_propiedad = descripcion_propiedad;
-        this.admnistrador_propiedad = admnistrador_propiedad;
+        this.administrador_propiedad = administrador_propiedad;
         this.habilitado_rentar = habilitado_rentar;
         this.habilitado_comprar = habilitado_comprar;
     }
@@ -123,12 +124,12 @@ public class Propiedad {
         this.descripcion_propiedad = descripcion_propiedad;
     }
 
-    public String getAdmnistrador_propiedad() {
-        return admnistrador_propiedad;
+    public UsuarioWeb getAdministrador_propiedad() {
+        return administrador_propiedad;
     }
 
-    public void setAdmnistrador_propiedad(String admnistrador_propiedad) {
-        this.admnistrador_propiedad = admnistrador_propiedad;
+    public void setAdministrador_propiedad(UsuarioWeb administrador_propiedad) {
+        this.administrador_propiedad = administrador_propiedad;
     }
 
     public boolean isHabilitado_rentar() {
@@ -159,7 +160,7 @@ public class Propiedad {
                 ", habitacion_propiedad=" + habitacion_propiedad +
                 ", baños_propiedad=" + baños_propiedad +
                 ", descripcion_propiedad='" + descripcion_propiedad + '\'' +
-                ", admnistrador_propiedad='" + admnistrador_propiedad + '\'' +
+                ", administrador_propiedad=" + administrador_propiedad +
                 ", habilitado_rentar=" + habilitado_rentar +
                 ", habilitado_comprar=" + habilitado_comprar +
                 '}';

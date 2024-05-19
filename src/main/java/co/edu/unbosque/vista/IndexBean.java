@@ -26,5 +26,11 @@ public class IndexBean implements Serializable {
     return "inmuebleComprar.xhtml";
     }
 
+    public PropiedadDTO getPropiedadDTO() {
+        return propiedadDTO;
+    }
 
+    public void setPropiedadDTO(PropiedadDTO propiedadDTO) {
+        this.propiedadDTO = propiedadDTO;
+    }
 }

@@ -3,6 +3,7 @@ package co.edu.unbosque.servicios;
 import co.edu.unbosque.modelo.dao.UsuarioWebDAO;
 import co.edu.unbosque.modelo.dto.UsuarioWebDTO;
 import co.edu.unbosque.modelo.entidades.UsuarioWeb;
+import co.edu.unbosque.util.SHA256Util;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import org.modelmapper.ModelMapper;
@@ -23,6 +24,7 @@ public class UsuarioWebServicios implements Serializable {
 
     public UsuarioWebDTO crearUsuario(UsuarioWebDTO usuario) {
         System.out.println("En el servicio creando: " + usuario.toString());
+        usuario.setContrasenia_usuario(SHA256Util.hash(usuario.getContrasenia_usuario())); // Cifrando
         return modelMapper.map(usuarioWebDAO.crear(modelMapper.map(usuario, UsuarioWeb.class)), UsuarioWebDTO.class);
     }
 

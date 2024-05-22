@@ -8,6 +8,8 @@ import co.edu.unbosque.modelo.entidades.Propiedad;
 import co.edu.unbosque.modelo.entidades.UsuarioWeb;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.modelmapper.ModelMapper;
 
 import java.io.Serializable;
@@ -17,7 +19,7 @@ import java.util.stream.Collectors;
 @Stateless
 public class PropiedadServicios implements Serializable {
     private static final long serialVersionUID = 1L;
-
+    private static final Logger logger = LogManager.getLogger(PropiedadServicios.class);
 
     public ModelMapper modelMapper = new ModelMapper();
 
@@ -30,6 +32,7 @@ public class PropiedadServicios implements Serializable {
 
     public PropiedadDTO crearPropiedad(PropiedadDTO propiedad, String nombre_admin) {
         UsuarioWeb admin = usuarioWebDAO.buscar(nombre_admin);
+        logger.info("Creando propiedad , usuario encontrado {}", nombre_admin);
         System.out.println("Creando propiedad, usuario encontrado " + admin.getNombre_usuario());
         UsuarioWebDTO adminDto = modelMapper.map(admin, UsuarioWebDTO.class);
         propiedad.setAdministrador_propiedad(adminDto);
@@ -78,6 +81,10 @@ public class PropiedadServicios implements Serializable {
                 .map(entity -> modelMapper.map(entity, PropiedadDTO.class))
                 .filter(propiedadDTO -> propiedadDTO.getAdministrador_propiedad().equals(filtro))
                 .collect(Collectors.toSet());
+    }
+
+    public void enviarCotizacionCorreo(PropiedadDTO propiedadDTO, String emailSender, String senderMessage, String emailUsername){
+
     }
 
 }

@@ -28,6 +28,9 @@
         <p:graphicImage value="resources/img/icon.png"
             style="position: absolute; top: 50px; left: 800px; height: 70px;" />
 
+        <p:linkButton outcome="register.xhtml" value="Crear un Administrador" styleClass="ui-button-raised ui-button-warning"
+                      style="position: absolute; top:100px; right: 100px; width: 250px;" />
+
         <p:linkButton outcome="login.xhtml" value="Iniciar Sesión" styleClass="ui-button-raised ui-button-warning"
             style="position: absolute; top:50px; right: 100px; width: 250px;" />
 
@@ -42,8 +45,9 @@
                 <f:selectItems value="#{basicView.cities}" />
             </p:selectOneMenu>
 
-            <p:commandButton type="button" value="Buscar" styleClass="ui-button-raised ui-button-warning"
-                style="margin:0;" />
+            <p:linkButton outcome="inmuebleRenta.xhtml" value="Buscar" styleClass="ui-button-raised ui-button-warning"
+                          style="margin:0;" />
+
 
         </section>
     </h:form>

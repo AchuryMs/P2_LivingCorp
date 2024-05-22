@@ -4,6 +4,7 @@ import co.edu.unbosque.excepciones.UsuarioWebException;
 import co.edu.unbosque.modelo.dto.UsuarioWebDTO;
 import co.edu.unbosque.servicios.UsuarioWebServicios;
 import jakarta.annotation.ManagedBean;
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.faces.context.ExternalContext;
 import jakarta.faces.context.FacesContext;
@@ -14,7 +15,7 @@ import jakarta.servlet.http.HttpSession;
 import java.io.Serializable;
 
 @Named
-@SessionScoped
+@RequestScoped
 public class LoginBean implements Serializable {
     private static final long serialVersionUID = 1L;
 

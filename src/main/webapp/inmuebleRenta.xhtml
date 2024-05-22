@@ -185,7 +185,8 @@
                     Apartamento
                 </f:facet>
             </div>
-            <p:commandButton icon="pi pi-check" value="Ver más detalles" />
+            <p:commandButton value="Abrir Modal" oncomplete="PF('myDialog').show()" icon="pi pi-external-link" />
+
         </p:card>
         <p:card style="width: 300px; margin: 10px;">
             <f:facet name="header">
@@ -199,7 +200,8 @@
                     Casa Campestre
                 </f:facet>
             </div>
-            <p:commandButton icon="pi pi-check" value="Ver más detalles" />
+            <p:commandButton value="Abrir Modal" oncomplete="PF('myDialog').show()" icon="pi pi-external-link" />
+
         </p:card>
         <p:card style="width: 300px; margin: 10px;">
             <f:facet name="header">
@@ -245,15 +247,23 @@
 
                     <h:outputText value="Tarifa de transporte" styleClass="label" />
                     <h:outputText value="Sí" styleClass="value" />
-
                     <h:outputText value="Espacios comunes" styleClass="label" />
                     <h:outputText value="Sí" styleClass="value" />
+                        <h3>Haz una cotizacion</h3>
+                    <p:outputLabel for="emailSender" value="Tu correo electronico" />
+                    <p:inputText id="emailSender" required="true" label="Usuario" value="#{mailBean.emailSender}"/>
+
+                    <p:inputTextarea rows="5" cols="30" counter="display" maxlength="25"
+                                     counterTemplate="{0} characters remaining." value="#{mailBean.senderMessage}" autoResize="false"/>
+                    <h:outputText id="display" class="block" />
+
                 </h:panelGrid>
                 <f:facet name="footer">
                     <p:linkButton outcome="pasarelaPagos.xhtml" value="Rentar" style="margin-right:20px;"
                         target="_blank">
                         <f:param name="productId" value="10" />
                     </p:linkButton>
+                    <p:commandButton value="Quiero Cotizar!" action="#{mailBean.crearRequest()}" icon="pi pi-external-link" style="margin-right:50px;"/>
                 </f:facet>
             </p:card>
         </h:form>

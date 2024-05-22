@@ -3,8 +3,11 @@ package co.edu.unbosque.vista;
 import co.edu.unbosque.modelo.dto.UsuarioWebDTO;
 import co.edu.unbosque.servicios.UsuarioWebServicios;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.faces.context.ExternalContext;
+import jakarta.faces.context.FacesContext;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.Serializable;
 
@@ -17,14 +20,13 @@ public class RegisterBean implements Serializable {
     UsuarioWebServicios usuarioWebServicios;
 
     private  UsuarioWebDTO usuarioWebDTO = new UsuarioWebDTO();
-    //ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
-    //HttpSession session;
+    ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+    HttpSession session = (HttpSession) externalContext.getSession(true);
 
     public String crearUsuario(){
         System.out.println("En el bean, recibiendo: " + usuarioWebDTO.toString() + "para persistir");
         usuarioWebServicios.crearUsuario(usuarioWebDTO);
-        //session = (HttpSession) externalContext.getSession(true);
-        //session.setAttribute("usuario", usuarioWebDTO);
+        session.setAttribute("usuario", usuarioWebDTO.getNombre_usuario());
     return "home-user";
     }
 

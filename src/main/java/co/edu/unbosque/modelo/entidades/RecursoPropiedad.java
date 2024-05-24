@@ -12,7 +12,7 @@ public class RecursoPropiedad {
     private int id_recurso_propiedad;
     @Column(name = "RESOURCE_ID")
     private int id_recurso;
-    @Column(name = "PROPERTY_ID")
+    @JoinColumn(name = "PROPERTY_ID", referencedColumnName = "PROPERTY_ID")
     private int id_propiedad;
     @Column(name = "RESOURCE_MIN_PRICE")
     private double precio_min_recurso;
@@ -28,7 +28,7 @@ public class RecursoPropiedad {
     public RecursoPropiedad() {
     }
 
-    public RecursoPropiedad(int id_recurso_propiedad, int id_recurso, int id_propiedad, double precio_min_recurso, double tiempo_min_recurso, String disponibilidad_recurso, int capacidad_recurso, String email_reserva) {
+    public RecursoPropiedad(int id_recurso_propiedad, int id_recurso,int id_propiedad, double precio_min_recurso, double tiempo_min_recurso, String disponibilidad_recurso, int capacidad_recurso, String email_reserva) {
         this.id_recurso_propiedad = id_recurso_propiedad;
         this.id_recurso = id_recurso;
         this.id_propiedad = id_propiedad;

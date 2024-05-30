@@ -25,7 +25,7 @@ public class RecursoPropiedad {
     @Column(name = "BOOKING_EMAIL")
     private String email_reserva;
 
-    //falta relacionar las propiedades como un atributo de tipo propiedad en alguno
+
     public RecursoPropiedad() {
     }
 
